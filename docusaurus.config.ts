@@ -29,7 +29,10 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/filameta/filameta.com/tree/master',
-          routeBasePath: "/"
+          routeBasePath: "/",
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: true,
+          breadcrumbs: false
         },
         blog: false,
         theme: {
@@ -37,6 +40,18 @@ const config: Config = {
         },
       } satisfies Preset.Options,
     ],
+    [
+      '@docusaurus/preset-classic',
+      {
+        sitemap: {
+          lastmod: 'date',
+          changefreq: 'monthly',
+          priority: 0.5,
+          ignorePatterns: ['/tags/**'],
+          filename: 'sitemap.xml',
+        },
+      },
+    ]
   ],
 
   themeConfig: {
