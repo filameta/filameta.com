@@ -1,6 +1,8 @@
 ## filameta.com
 
-A community database of filament profile and tips.
+![](./static/theme/happy-fox.webp)
+
+A community database of 3D-printing filament profiles and tips.
 
 ### License
 
