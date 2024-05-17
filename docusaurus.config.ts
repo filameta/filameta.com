@@ -24,7 +24,7 @@ const config: Config = {
 
   presets: [
     [
-      'classic',
+      '@docusaurus/preset-classic',
       {
         docs: {
           sidebarPath: './sidebars.ts',
@@ -32,17 +32,12 @@ const config: Config = {
           routeBasePath: "/",
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
-          breadcrumbs: false
+          breadcrumbs: false,
         },
         blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
-      } satisfies Preset.Options,
-    ],
-    [
-      '@docusaurus/preset-classic',
-      {
         sitemap: {
           lastmod: 'date',
           changefreq: 'monthly',
@@ -50,7 +45,7 @@ const config: Config = {
           ignorePatterns: ['/tags/**'],
           filename: 'sitemap.xml',
         },
-      },
+      } satisfies Preset.Options,
     ]
   ],
 
@@ -79,7 +74,14 @@ const config: Config = {
           label: 'GitHub',
           position: 'right',
         },
+        {
+          type: 'search',
+          position: 'right',
+        },
       ],
+    },
+    colorMode: {
+      respectPrefersColorScheme: true
     },
     footer: {
       style: 'light',
