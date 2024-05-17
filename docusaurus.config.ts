@@ -3,7 +3,7 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'FilaMeta',
+  title: 'FilaMeta (Beta)',
   tagline: 'A database of 3D-printing filament profiles and tips.',
   favicon: 'img/favicon.ico',
   url: 'https://filameta.com',
@@ -28,7 +28,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/filameta/filameta.com/tree/master/src',
+          editUrl: 'https://github.com/filameta/filameta.com/tree/master',
           routeBasePath: "/"
         },
         blog: false,
@@ -40,20 +40,24 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'theme/social-card.webp',
     navbar: {
-      title: 'FilaMeta',
+      title: 'FilaMeta (Beta)',
       logo: {
         alt: 'FilaMeta Logo',
-        src: 'img/logo.svg',
+        src: 'theme/sleeping-fox.webp',
       },
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'filamentsSidebar',
           position: 'left',
-          label: 'Filaments',
+          label: 'All Filaments',
+        },
+        {
+          href: 'https://github.com/filameta/filameta.com/issues/new',
+          label: 'Suggest a Filament',
+          position: 'right',
         },
         {
           href: 'https://github.com/filameta/filameta.com',
@@ -64,7 +68,7 @@ const config: Config = {
     },
     footer: {
       style: 'light',
-      copyright: `Copyright © ${new Date().getFullYear()} FilaMeta. Built with love and Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} FilaMeta. Built by Silvenga with love and Docusaurus.`
     },
     prism: {
       theme: prismThemes.github,
