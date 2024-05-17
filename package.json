@@ -33,7 +33,12 @@
     "@docusaurus/module-type-aliases": "3.3.2",
     "@docusaurus/tsconfig": "3.3.2",
     "@docusaurus/types": "3.3.2",
+    "@types/eslint": "^8",
     "@types/react": "^18.3.2",
+    "eslint": "^8.57.0",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "typescript": "~5.4.5"
   },
   "browserslist": {
