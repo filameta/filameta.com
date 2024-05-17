@@ -81,7 +81,10 @@ const config: Config = {
       ],
     },
     colorMode: {
-      respectPrefersColorScheme: true
+      // Assets aren't optimized for dark mode yet.
+      respectPrefersColorScheme: false,
+      defaultMode: "light",
+      disableSwitch: true
     },
     footer: {
       style: "light",
@@ -93,7 +96,24 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
 
-  plugins: [require.resolve("docusaurus-lunr-search"), require.resolve("docusaurus-plugin-sass")],
+  markdown: {
+    parseFrontMatter: async (params) => {
+      // Reuse the default parser
+      const result = await params.defaultParseFrontMatter(params);
+
+      if (!result.frontMatter.pagination_enabled) {
+        result.frontMatter.pagination_prev = null;
+        result.frontMatter.pagination_next = null;
+      }
+
+      return result;
+    }
+  },
+
+  plugins: [
+    require.resolve("docusaurus-lunr-search"),
+    require.resolve("docusaurus-plugin-sass")
+  ],
 };
 
 export default config;
