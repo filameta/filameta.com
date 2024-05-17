@@ -12,14 +12,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: |
+          corepack enable
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: yarn
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-      - name: Build website
-        run: yarn build
+      - name: Build
+        run: |
+          yarn install --immutable
+          yarn build
 
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
@@ -32,7 +37,6 @@ jobs:
     permissions:
       pages: write
       id-token: write
-    # Deploy to the github-pages environment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
