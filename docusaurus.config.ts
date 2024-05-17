@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'FilaMeta (Beta)',
   tagline: 'A database of 3D-printing filament profiles and tips.',
-  favicon: 'img/favicon.ico',
+  favicon: 'theme/favicon.svg',
   url: 'https://filameta.com',
   baseUrl: '/',
   noIndex: true,

@@ -21,3 +21,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.subTitle {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}

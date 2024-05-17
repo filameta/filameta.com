@@ -23,6 +23,7 @@ function HomepageHeader() {
             Explore Filaments
           </Link>
         </div>
+        <p className={clsx('', styles.subTitle)}>And Fila the fox says hi!</p>
       </div>
     </header>
   );
@@ -32,7 +33,7 @@ export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
+      title={`Hello there!`}
       description={siteConfig.tagline}>
       <HomepageHeader />
       <main>
