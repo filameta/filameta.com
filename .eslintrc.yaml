@@ -1,3 +1,4 @@
+root: true
 env:
   browser: true
   es2021: true
@@ -7,6 +8,7 @@ extends:
   - plugin:react/recommended
   - plugin:react/jsx-runtime
   - plugin:react-hooks/recommended
+  - plugin:@docusaurus/recommended
 parser: "@typescript-eslint/parser"
 parserOptions:
   ecmaVersion: latest
@@ -23,7 +25,6 @@ rules:
   "@typescript-eslint/no-unused-vars": off
   react-hooks/exhaustive-deps:
     - warn
-    - additionalHooks: (useDebouncedEffect)
   quotes: warn
   default-case: warn
   require-await: warn
