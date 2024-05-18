@@ -1,11 +1,11 @@
 import { themes as prismThemes } from "prism-react-renderer";
-import type { Config } from "@docusaurus/types";
+import type { Config, LoadContext } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "FilaMeta (Beta)",
   tagline: "A database of 3D-printing filament profiles and tips.",
-  favicon: "theme/favicon.svg",
+  favicon: "theme/favicon/favicon.ico",
   url: "https://filameta.com",
   baseUrl: "/",
   noIndex: true,
@@ -55,7 +55,7 @@ const config: Config = {
       title: "FilaMeta (Beta)",
       logo: {
         alt: "FilaMeta Logo",
-        src: "theme/sleeping-fox.webp",
+        src: "theme/logo.webp",
       },
       items: [
         {
@@ -81,14 +81,11 @@ const config: Config = {
       ],
     },
     colorMode: {
-      // Assets aren't optimized for dark mode yet.
-      respectPrefersColorScheme: false,
-      defaultMode: "light",
-      disableSwitch: true
+      respectPrefersColorScheme: true
     },
     footer: {
       style: "light",
-      copyright: `Copyright © ${new Date().getFullYear()} FilaMeta. Built by Silvenga with love and Docusaurus.`
+      copyright: `Copyright © ${new Date().getFullYear()}. Built by Silvenga with love and Docusaurus.`
     },
     prism: {
       theme: prismThemes.github,
@@ -112,7 +109,22 @@ const config: Config = {
 
   plugins: [
     require.resolve("docusaurus-lunr-search"),
-    require.resolve("docusaurus-plugin-sass")
+    require.resolve("docusaurus-plugin-sass"),
+    // eslint-disable-next-line require-await, @typescript-eslint/require-await
+    async function custom(_context: LoadContext, _options: unknown) {
+      return {
+        name: "docusaurus-tailwindcss",
+        configurePostCss(postcssOptions) {
+          // Appends TailwindCSS and AutoPrefixer.
+
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
+          postcssOptions.plugins.push(require("tailwindcss"));
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
+          postcssOptions.plugins.push(require("autoprefixer"));
+          return postcssOptions;
+        },
+      };
+    },
   ],
 };
 

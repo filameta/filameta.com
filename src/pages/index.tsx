@@ -1,33 +1,29 @@
-import HappyFox from "../../static/theme/happy-fox.svg";
+import HappyFox from "../../static/theme/happy-fox.webp";
 import Heading from "@theme/Heading";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import SearchBar from "@theme/SearchBar";
-import clsx from "clsx";
-import styles from "./index.module.css";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx("", styles.heroBanner)}>
-      <div className="container">
-        <HappyFox title="Happy fox." style={{ height: "300px", maxWidth: "100%" }} />
-        <Heading as="h1" className="hero__title">
+    <header className="">
+      <div className="container flex flex-col items-center">
+        <img className="w-96 aspect-square" src={HappyFox} alt="Fila the fox" />
+        <Heading as="h1" className="font-light text-5xl -mt-9">
           {siteConfig.title}
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.searchContainer}>
+        <p className="">{siteConfig.tagline}</p>
+        <div className="mb-6">
           <SearchBar />
         </div>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--primary button--lg"
-            to="/filaments">
-            Explore Filaments
-          </Link>
-        </div>
-        <p className={clsx("", styles.subTitle)}>And Fila the fox says hi!</p>
+        <Link
+          className="button button--primary button--lg mb-3"
+          to="/filaments">
+          View All Filaments
+        </Link>
+        <p className="">And <span className="underline decoration-brand-orange decoration-2">Fila</span> the fox says hi!</p>
       </div>
     </header>
   );
