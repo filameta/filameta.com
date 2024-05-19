@@ -18,7 +18,7 @@ export function FilametaLayout({ context, children }: { context: FilametaDocCont
     if (context.kind == "vendor") {
         return (
             <VendorContextProvider context={context}>
-                <VendorLayout>{children}</VendorLayout>;
+                <VendorLayout>{children}</VendorLayout>
             </VendorContextProvider>
         )
     }
