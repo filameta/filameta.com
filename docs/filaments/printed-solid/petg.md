@@ -1,4 +1,6 @@
 ---
 kind: filament
-title: PETG Pro
+title: PETG
 ---
+
+

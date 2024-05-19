@@ -32,7 +32,7 @@ const config: Config = {
           routeBasePath: "/",
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
-          breadcrumbs: false,
+          breadcrumbs: false
         },
         blog: false,
         theme: {
@@ -51,6 +51,12 @@ const config: Config = {
 
   themeConfig: {
     image: "theme/social-card.webp",
+    announcementBar: {
+      content: "Still building the site foundation, so don't expect much for now. - Silvenga",
+      backgroundColor: "#e0783e",
+      textColor: "#f5f6f7",
+      isCloseable: false
+    },
     navbar: {
       title: "FilaMeta (Beta)",
       logo: {
@@ -101,6 +107,11 @@ const config: Config = {
       if (!result.frontMatter.pagination_enabled) {
         result.frontMatter.pagination_prev = null;
         result.frontMatter.pagination_next = null;
+      }
+
+      if (result.frontMatter.kind === "vendor"
+        || result.frontMatter.kind === "filament") {
+        result.frontMatter.hide_title = true;
       }
 
       return result;

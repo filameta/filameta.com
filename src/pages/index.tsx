@@ -2,7 +2,6 @@ import HappyFox from "../../static/theme/happy-fox.webp";
 import Heading from "@theme/Heading";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
-import SearchBar from "@theme/SearchBar";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 function HomepageHeader() {
@@ -15,9 +14,6 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="">{siteConfig.tagline}</p>
-        <div className="mb-6">
-          <SearchBar />
-        </div>
         <Link
           className="button button--primary button--lg mb-3"
           to="/filaments">

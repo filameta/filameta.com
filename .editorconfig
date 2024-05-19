@@ -8,3 +8,6 @@ trim_trailing_whitespace = true
 
 [*.yaml]
 tab_width = 4
+
+[*.md,*.mdx]
+tab_width = 2
