@@ -1,6 +1,0 @@
----
-kind: filament
-title: PETG
----
-
-

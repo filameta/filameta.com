@@ -1,4 +1,0 @@
----
-kind: filament
-title: PLA
----

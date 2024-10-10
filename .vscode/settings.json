@@ -1,9 +1,5 @@
 {
-    "cSpell.words": [
-        "changefreq",
-        "clsx",
-        "filameta",
-        "lastmod",
-        "webp"
-    ]
+    "files.associations": {
+        "*.css": "tailwindcss"
+    }
 }
