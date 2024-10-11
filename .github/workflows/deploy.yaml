@@ -3,16 +3,15 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master
+      - next
   workflow_dispatch: {}
 
 jobs:
   build:
-    name: Build Docusaurus
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Enable Corepack
         run: |
           corepack enable
@@ -20,28 +19,54 @@ jobs:
         with:
           node-version: 20
           cache: yarn
-
       - name: Build
         run: |
           yarn install --immutable
           yarn build
-
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: build
+      - name: Setup Index Now
+        run: |
+          echo "${{ secrets.INDEXNOW_KEY }}" > "./dist/${{ secrets.INDEXNOW_KEY }}.txt"
+        if: github.ref_name == 'next'
 
-  deploy:
-    name: Deploy to GitHub Pages
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
+  deploy-rabbit-edge:
+    name: Deploy to Rabbit Edge
+    needs:
+      - build
+    if: github.ref_name == 'next'
+    concurrency: rabbit-edge
     environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      name: rabbit-edge
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - name: Deploy to Bunny Edge
+        uses: ayeressian/bunnycdn-storage-deploy@v2.2.3
+        with:
+          source: "dist"
+          destination: ""
+          storageZoneName: "${{ secrets.STORAGE_NAME }}"
+          storagePassword: "${{ secrets.STORAGE_PASSWORD }}"
+          accessKey: "${{ secrets.ACCESS_KEY }}"
+          pullZoneId: "${{ secrets.ZONE_ID }}"
+          upload: "true"
+          remove: "true"
+          purgePullZone: "true"
+
+  index-now:
+    name: Update IndexNow
+    needs:
+      - deploy-rabbit-edge
+    if: github.ref_name == 'next'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: bojieyang/indexnow-action@v2
+        with:
+          sitemap-location: https://silvenga.com/sitemap.xml
+          key: ${{ secrets.INDEXNOW_KEY }}
