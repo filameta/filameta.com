@@ -1,10 +1,13 @@
+import { MathJaxContext } from "better-react-mathjax";
 import { HelmetProvider } from "react-helmet-async";
 import { Router } from "./pages/router";
 
 export function App() {
     return (
         <HelmetProvider>
-            <Router />
+            <MathJaxContext hideUntilTypeset="first">
+                <Router />
+            </MathJaxContext>
         </HelmetProvider>
     )
 }
