@@ -96,8 +96,8 @@ export function FilamentDensityCalculator() {
                 </div>
 
                 <div className="flex justify-center items-center space-x-12">
-                    <div className="basis-3/4">
-                        <MathJax>{`$$
+                    <div className="basis-3/4 min-h-28">
+                        <MathJax dynamic>{`$$
                     \\cfrac{
                         ${getFieldState("weight").invalid ? "weight" : weight}\\,g
                     }{

@@ -4,7 +4,7 @@ import { FilamentDensityCalculator } from "./filament-density-calculator";
 
 export function FilamentDensityCalculatorPage() {
     return (
-        <article className="container flex flex-wrap pt-6">
+        <article className="container flex flex-col xl:flex-row pt-6">
             <header className="prose mt-6">
                 <h1>Filament Density Calculator</h1>
                 <p>
