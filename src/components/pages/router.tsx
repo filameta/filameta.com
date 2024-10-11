@@ -4,9 +4,9 @@ import { DefaultLayout } from "../layouts/default/default-layout";
 import { LandingPage } from "./landing/landing-page";
 import { NotFoundPage } from "./not-found/not-found-page";
 import { RootLayout } from "../layouts/root/root-layout";
-import { FilamentDensityCalculatorPage } from "./tools/filament-desnity-calculator/filament-density-calculator-page";
 import { AllToolsPage } from "./tools/all-tools-page";
 import { ToolLayout } from "../layouts/tool/tool-layout";
+import { getToolsRoutes } from "./tools/all-tools-routes";
 
 function createRouter() {
     return createBrowserRouter([
@@ -38,14 +38,7 @@ function createRouter() {
                                 {
                                     element: <ToolLayout />,
                                     children: [
-                                        {
-                                            path: "filament-density-calculator",
-                                            element: <FilamentDensityCalculatorPage />,
-                                            handle: {
-                                                title: "Filament Density Calculator",
-                                                description: "Calculate unknown filament densities with a scale and math."
-                                            } satisfies RouteContextProps
-                                        }
+                                        ...getToolsRoutes()
                                     ]
                                 }
                             ]
