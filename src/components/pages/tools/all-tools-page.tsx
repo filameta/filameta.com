@@ -26,7 +26,7 @@ export function AllToolsPage() {
                 ))}
                 <ExternalLink suppressIcon to="https://github.com/filameta/filameta.com/issues/new" className="border rounded-lg p-6 hover:bg-gray-100 active:bg-gray-200 flex items-center justify-center space-x-6">
                     <div className="flex flex-col">
-                        <h2 className="text-xl font-light mb-1 flex items-center">
+                        <h2 className="text-xl mb-1 flex items-center">
                             Request a Tool!
                             <FaExternalLinkAlt aria-hidden className="ms-3 h-4 w-4" />
                         </h2>
@@ -49,7 +49,7 @@ function ToolCard({ title, description, link }: ToolCardProp) {
     return (
         <Link to={link} className="border rounded-lg p-6 hover:bg-gray-100 active:bg-gray-200 flex items-center justify-center space-x-6">
             <div className="flex flex-col">
-                <h2 className="text-xl font-light mb-1">{title}</h2>
+                <h2 className="text-xl mb-1">{title}</h2>
                 <p className="prose py-0">{description}</p>
             </div>
             <FaChevronRight />
