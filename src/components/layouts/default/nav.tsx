@@ -3,6 +3,7 @@ import { FaGithub, FaRegLightbulb } from "react-icons/fa";
 import { GoHome } from "react-icons/go";
 import { TbMenu2, TbTools } from "react-icons/tb";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { ExternalLink } from "@/components/utilities/external-link";
 import { Drawer, DrawerContent, DrawerOverlay, DrawerPortal, DrawerTrigger } from "@/lib/ui/drawer";
 
 export function Nav() {
@@ -57,11 +58,11 @@ function NavItems() {
             </li>
             <li className="md:ms-6 flex items-center">
                 <FaGithub className="me-2" />
-                <a href="https://github.com/filameta/filameta.com" className="link link-hover" rel="external" target="_blank">GitHub</a>
+                <ExternalLink to="https://github.com/filameta/filameta.com" className="link link-hover">GitHub</ExternalLink>
             </li>
             <li className="md:ms-6 flex items-center">
                 <FaRegLightbulb className="me-2" />
-                <a href="https://github.com/filameta/filameta.com/issues/new" className="link link-hover" rel="external" target="_blank">Request a Tool</a>
+                <ExternalLink to="https://github.com/filameta/filameta.com/issues/new" className="link link-hover">Request a Tool</ExternalLink>
             </li>
         </>
     );
