@@ -95,7 +95,7 @@ export function FilamentDensityCalculator() {
                     <hr className="grow" />
                 </div>
 
-                <div className="flex justify-center items-center space-x-12">
+                <div className="flex flex-col sm:flex-row justify-center items-center sm:space-x-12">
                     <div className="basis-3/4 min-h-28">
                         <MathJax dynamic>{`$$
                     \\cfrac{
@@ -107,7 +107,7 @@ export function FilamentDensityCalculator() {
                     ${density || "density"}\\,g/cm^3
                     $$`}</MathJax>
                     </div>
-                    <div className="flex flex-col space-y-3 basis-1/4">
+                    <div className="flex flex-row sm:flex-col sm:space-y-3 space-x-3 sm:space-x-0 basis-1/4 mt-6">
                         <Button disabled={!density} onClick={() => void copy(density!.toString())}>
                             Copy
                             <FaRegClipboard className="ms-2" />

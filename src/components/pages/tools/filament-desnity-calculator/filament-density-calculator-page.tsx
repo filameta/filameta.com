@@ -33,7 +33,7 @@ export function FilamentDensityCalculatorPage() {
                     And that's all!
                 </p>
             </header>
-            <Card className="mt-6 grow p-6">
+            <Card className="mt-6 grow md:p-6">
                 <CardHeader>
                     <CardTitle>
                         Filament Density
