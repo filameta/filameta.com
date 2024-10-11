@@ -1,7 +1,7 @@
 import { MathJax } from "better-react-mathjax";
 import { useMemo } from "react";
 import { useForm, useWatch } from "react-hook-form"
-import { FaClipboard, FaRegClipboard, FaRegTrashCan } from "react-icons/fa6";
+import { FaRegClipboard, FaRegTrashCan } from "react-icons/fa6";
 import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import { useCopyToClipboard } from "usehooks-ts";
 import { z } from "zod"
@@ -13,15 +13,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const schema = z.object({
     length: z.coerce.number({
         required_error: "Length is required",
-        invalid_type_error: "Length must be a number",
+        invalid_type_error: "Length must be a number"
     }).gt(0),
     weight: z.coerce.number({
         required_error: "Length is required",
-        invalid_type_error: "Length must be a number",
+        invalid_type_error: "Length must be a number"
     }).gt(0),
     diameter: z.coerce.number({
         required_error: "Length is required",
-        invalid_type_error: "Length must be a number",
+        invalid_type_error: "Length must be a number"
     }).gt(0),
 })
 
@@ -35,6 +35,9 @@ export function FilamentDensityCalculator() {
             weight: 3.1
         }
     });
+
+    const { getFieldState } = form;
+
 
     const { diameter, length, weight } = useWatch({ control: form.control });
 
@@ -92,27 +95,16 @@ export function FilamentDensityCalculator() {
                     <hr className="grow" />
                 </div>
 
-                {/* <div className="flex flex-col">
-                    <div className="space-y-2">
-                        <Label htmlFor="density">Density</Label>
-                        <Input readOnly
-                            id="density"
-                            value={""}
-                            disabled={!form.formState.isValid}
-                            placeholder={form.formState.isValid ? "" : "Invalid Inputs"}></Input>
-                    </div>
-                </div> */}
-
                 <div className="flex justify-center items-center space-x-12">
                     <div className="basis-3/4">
                         <MathJax>{`$$
                     \\cfrac{
-                        ${weight ?? "weight"}\\,g
+                        ${getFieldState("weight").invalid ? "weight" : weight}\\,g
                     }{
-                        \\pi \\, {({{\\cfrac{${diameter ?? "diameter"}\\,mm}{2}}})}^2 \\, ${length ?? "length"}\\,m
+                        \\pi \\, {({{\\cfrac{${getFieldState("diameter").invalid ? "diameter" : diameter}\\,mm}{2}}})}^2 \\, ${getFieldState("length").invalid ? "length" : length}\\,m
                     }
                     ${density ? "\\approx" : "="}
-                    ${density ?? "density"}\\,g/cm^3
+                    ${density || "density"}\\,g/cm^3
                     $$`}</MathJax>
                     </div>
                     <div className="flex flex-col space-y-3 basis-1/4">
@@ -121,7 +113,7 @@ export function FilamentDensityCalculator() {
                             <FaRegClipboard className="ms-2" />
                         </Button>
                         <Button variant="outline" onClick={() => form.reset()}>
-                            Clear
+                            Reset
                             <FaRegTrashCan className="ms-2" />
                         </Button>
                     </div>

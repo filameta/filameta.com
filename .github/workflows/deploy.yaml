@@ -23,15 +23,15 @@ jobs:
         run: |
           yarn install --immutable
           yarn build
+      - name: Setup Index Now
+        run: |
+          echo "${{ secrets.INDEXNOW_KEY }}" > "./dist/${{ secrets.INDEXNOW_KEY }}.txt"
+        if: github.ref_name == 'next'
       - uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist
           if-no-files-found: error
-      - name: Setup Index Now
-        run: |
-          echo "${{ secrets.INDEXNOW_KEY }}" > "./dist/${{ secrets.INDEXNOW_KEY }}.txt"
-        if: github.ref_name == 'next'
 
   deploy-rabbit-edge:
     name: Deploy to Rabbit Edge
