@@ -4,9 +4,8 @@ import { FilamentDensityCalculator } from "./filament-density-calculator";
 
 export function FilamentDensityCalculatorPage() {
     return (
-        <article className="container flex flex-col xl:flex-row pt-6">
-            <header className="prose mt-6">
-                <h1>Filament Density Calculator</h1>
+        <>
+            <section className="prose mt-6">
                 <p>
                     Many filament vendors publish the densities of their filaments - sometimes in the Safety data sheet (SDS), which is awesome! What if you're out of luck?
                 </p>
@@ -32,7 +31,7 @@ export function FilamentDensityCalculatorPage() {
                 <p>
                     And that's all!
                 </p>
-            </header>
+            </section>
             <Card className="mt-6 grow md:p-6">
                 <CardHeader>
                     <CardTitle>
@@ -43,6 +42,6 @@ export function FilamentDensityCalculatorPage() {
                     <FilamentDensityCalculator />
                 </CardContent>
             </Card>
-        </article>
+        </>
     )
 }

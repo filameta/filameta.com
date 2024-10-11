@@ -1,46 +1,34 @@
 import { useEffect, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
-import { ScrollRestoration, useLocation, useMatches, useOutlet } from "react-router-dom";
-import { RouteContextProps } from "../../pages/router";
+import { ScrollRestoration, useLocation, useOutlet } from "react-router-dom";
+import { useRouteTitle } from "@/components/hooks/use-route-title";
 import { umami } from "./umami";
 
 export function RootLayout() {
 
-    const matches = useMatches();
-
-    const routeContext = useMemo(() => {
-        const routesWithContext = matches.filter(x => !!x.handle);
-        if (routesWithContext.length > 1) {
-            console.warn("Multiple matches with context were detected for the current route. This isn't supported.");
-        }
-        if (routesWithContext.length == 1) {
-            return routesWithContext[0].handle as RouteContextProps;
-        }
-        return undefined;
-    }, [matches]);
-
-    const title = useMemo(
+    const routeTitle = useRouteTitle();
+    const pageTitle = useMemo(
         () => {
-            if (!routeContext?.title) {
+            if (!routeTitle) {
                 console.warn("No title was set, defaulting to the default title.");
             }
-            return routeContext?.title ? `${routeContext.title} | Filameta` : "Filameta";
+            return routeTitle ? `${routeTitle} | Filameta` : "Filameta";
         },
-        [routeContext?.title]
+        [routeTitle]
     );
     const { pathname } = useLocation();
 
     const outlet = useOutlet();
 
     useEffect(() => {
-        umami.trackPageView(x => ({ ...x, title, url: pathname }));
-    }, [title, pathname])
+        umami.trackPageView(x => ({ ...x, title: pageTitle, url: pathname }));
+    }, [pageTitle, pathname])
 
     return (
         <>
             <Helmet>
-                <title>{title}</title>
-                <meta property="og:title" content={title} />
+                <title>{pageTitle}</title>
+                <meta property="og:title" content={pageTitle} />
             </Helmet>
             <ScrollRestoration />
             {outlet}
