@@ -3,6 +3,16 @@ import { useMatches } from "react-router-dom";
 import { RouteContextProps } from "../pages/router";
 
 export function useRouteTitle() {
+    const routeContext = useRouteContext();
+    return routeContext?.title;
+}
+
+export function useRouteDescription() {
+    const routeContext = useRouteContext();
+    return routeContext?.description;
+}
+
+export function useRouteContext() {
     const matches = useMatches();
     const routeContext = useMemo(() => {
         const routesWithContext = matches.filter(x => !!x.handle);
@@ -14,5 +24,5 @@ export function useRouteTitle() {
         }
         return undefined;
     }, [matches]);
-    return routeContext?.title;
+    return routeContext;
 }

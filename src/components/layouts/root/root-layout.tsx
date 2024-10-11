@@ -1,12 +1,13 @@
 import { useEffect, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { ScrollRestoration, useLocation, useOutlet } from "react-router-dom";
-import { useRouteTitle } from "@/components/hooks/use-route-title";
+import { useRouteDescription, useRouteTitle } from "@/components/hooks/use-route-title";
 import { umami } from "./umami";
 
 export function RootLayout() {
 
     const routeTitle = useRouteTitle();
+    const routeDescription = useRouteDescription();
     const pageTitle = useMemo(
         () => {
             if (!routeTitle) {
@@ -29,6 +30,8 @@ export function RootLayout() {
             <Helmet>
                 <title>{pageTitle}</title>
                 <meta property="og:title" content={pageTitle} />
+                <meta property="description" content={routeDescription} />
+                <meta property="og:description" content={routeDescription} />
             </Helmet>
             <ScrollRestoration />
             {outlet}
