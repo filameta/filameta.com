@@ -1,7 +1,8 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
-import { ScrollRestoration, useMatches, useOutlet } from "react-router-dom";
+import { ScrollRestoration, useLocation, useMatches, useOutlet } from "react-router-dom";
 import { RouteContextProps } from "../../pages/router";
+import { umami } from "./umami";
 
 export function RootLayout() {
 
@@ -27,7 +28,13 @@ export function RootLayout() {
         },
         [routeContext?.title]
     );
+    const { pathname } = useLocation();
+
     const outlet = useOutlet();
+
+    useEffect(() => {
+        umami.trackPageView(x => ({ ...x, title, url: pathname }));
+    }, [title, pathname])
 
     return (
         <>
