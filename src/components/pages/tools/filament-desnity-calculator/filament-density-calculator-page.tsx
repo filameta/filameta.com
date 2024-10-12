@@ -6,7 +6,7 @@ import { FilamentDensityCalculator } from "./filament-density-calculator";
 export function FilamentDensityCalculatorPage() {
     return (
         <>
-            <section className="prose mt-6">
+            <section className="prose mx-auto">
                 <p>
                     Many filament vendors publish the densities of their filaments - sometimes in the Safety data sheet (SDS), which is awesome! What if you're out of luck?
                 </p>
@@ -33,7 +33,7 @@ export function FilamentDensityCalculatorPage() {
                     And that's all!
                 </p>
             </section>
-            <Card className="mt-6 grow w-full max-w-xl md:p-6">
+            <Card className="grow w-full max-w-xl md:p-6 mx-auto">
                 <CardHeader>
                     <CardTitle>
                         Filament Density

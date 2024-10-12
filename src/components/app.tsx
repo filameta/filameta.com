@@ -17,7 +17,7 @@ const config = {
         ],
     },
     displayAlign: "center",
-    messageStyle: "none"
+    messageStyle: "none",
 } satisfies MathJax2Config & Record<string, unknown>;
 
 export function App() {
@@ -33,4 +33,3 @@ export function App() {
         </HelmetProvider>
     )
 }
-
