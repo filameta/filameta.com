@@ -4459,6 +4459,7 @@ __metadata:
     eslint-plugin-only-warn: "npm:^1.1.0"
     eslint-plugin-react: "npm:^7.37.1"
     lucide-react: "npm:^0.451.0"
+    mathjax: "npm:^3.2.2"
     nodemon: "npm:^3.1.7"
     parcel: "npm:2.12.0"
     parcel-reporter-static-files-copy: "npm:^1.5.3"
@@ -6117,6 +6118,13 @@ __metadata:
     mj-context-menu: "npm:^0.6.1"
     speech-rule-engine: "npm:^4.0.6"
   checksum: 10/1091a1773f736c00723ce4db35f9f0f04f4e54b8af51cf1b916ea0e1f90411e64521970f9ec5f760a7b490956f54cf2a5ddda2a2d762eddf65d6cd63494c4f8c
+  languageName: node
+  linkType: hard
+
+"mathjax@npm:^3.2.2":
+  version: 3.2.2
+  resolution: "mathjax@npm:3.2.2"
+  checksum: 10/f2adaebff92e264112bdc17c5be453e6962d8fda13d0c0ae3f3f584d28a573785cda7cc6fa17a4ae9d039b8e2ea2099e8ce5994b62ba0e1043c81f12b358a04e
   languageName: node
   linkType: hard
 

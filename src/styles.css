@@ -26,3 +26,10 @@
         @apply no-underline hover:underline;
     }
 }
+
+@layer components {
+    /* Fix MathJax + TailWind's reset */
+    .MathJax svg {
+        display: inline;
+    }
+}
