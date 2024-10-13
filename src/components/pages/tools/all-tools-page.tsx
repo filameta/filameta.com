@@ -16,7 +16,7 @@ export function AllToolsPage() {
                 <TbTools className="me-3" />
                 All Tools and Calculators
             </h1>
-            <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mt-9">
+            <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mt-9 select-none">
                 {toolRoutes.map(tool => (
                     <ToolCard
                         key={tool.path}
