@@ -18,7 +18,7 @@ export function ToolLayout() {
                 </Link>
                 <h1 className="text-4xl text-center">{title}</h1>
             </header>
-            <article className="flex flex-col xl:flex-row xl:space-x-6 space-y-6 xl:space-y-0 pt-6 justify-center">
+            <article className="flex flex-col xl:flex-row xl:space-x-6 space-y-6 xl:space-y-0 pt-6 justify-center items-start">
                 {outlet}
             </article>
         </div>
